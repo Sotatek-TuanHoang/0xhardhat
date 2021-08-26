@@ -1,0 +1,12 @@
+node_modules
+.vscode
+.ideal/
+.ideal
+
+#Hardhat files
+cache
+artifacts
+.env
+yarn-error.log
+.ideal/
+.ideal
