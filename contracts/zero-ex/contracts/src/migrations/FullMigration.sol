@@ -23,7 +23,6 @@ pragma experimental ABIEncoderV2;
 import "../ZeroEx.sol";
 import "../features/interfaces/IOwnableFeature.sol";
 import "../features/TransformERC20Feature.sol";
-import "../features/MetaTransactionsFeature.sol";
 import "../features/NativeOrdersFeature.sol";
 import "./InitialMigration.sol";
 import "../features/MatchOrdersFeature.sol";
@@ -40,7 +39,6 @@ contract FullMigration {
         SimpleFunctionRegistryFeature registry;
         OwnableFeature ownable;
         TransformERC20Feature transformERC20;
-        MetaTransactionsFeature metaTransactions;
         NativeOrdersFeature nativeOrders;
         MatchOrdersFeature matchOrders;
         LimitOrderFeature limitOrder;
@@ -151,17 +149,6 @@ contract FullMigration {
                 abi.encodeWithSelector(
                     TransformERC20Feature.migrate.selector,
                     migrateOpts.transformerDeployer
-                ),
-                address(this)
-            );
-        }
-        // MetaTransactionsFeature
-        {
-            // Register the feature.
-            ownable.migrate(
-                address(features.metaTransactions),
-                abi.encodeWithSelector(
-                    MetaTransactionsFeature.migrate.selector
                 ),
                 address(this)
             );

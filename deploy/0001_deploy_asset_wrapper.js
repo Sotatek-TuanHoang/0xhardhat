@@ -1,22 +1,25 @@
-const { deployments, ethers } = require("hardhat");
+const { deployments, ethers, artifacts } = require("hardhat");
 const { erc20TokenInfo, erc721TokenInfo } = require("../src/utils/token_info");
+const IZeroEx = artifacts.require('IZeroEx');
+const FullMigration = artifacts.require('FullMigration');
 
 const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
 
 const func = async function ({ deployments, getNamedAccounts, getChainId }) {
   const { deploy, execute } = deployments;
   const { deployer } = await getNamedAccounts();
+  const txDefaultObj = {
+    gas: 8000000,
+    from: deployer,
+    gasPrice: 100000000, // for bsc
+  };
 
   const erc20Proxy = await deploy("ERC20Proxy", {
     from: deployer,
     args: [],
     log: true,
   });
-  const erc721Proxy = await deploy("ERC721Proxy", {
-    from: deployer,
-    args: [],
-    log: true,
-  });
+
 
   const zrxToken = await deploy("DummyERC20Token", {
     from: deployer,
@@ -24,41 +27,42 @@ const func = async function ({ deployments, getNamedAccounts, getChainId }) {
     log: true,
   });
 
-  const etherToken = await deploy("WETH9", {
+
+  const abcToken = await deploy("DummyERC20Token", {
     from: deployer,
-    args: [],
+    args: ["ABC TOKEN", "ABC", 18, "1000000000000000000000000000"],
     log: true,
   });
 
-  const chainId = await getChainId();
-  const exchange = await deploy("Exchange", {
-    from: deployer,
-    args: [chainId],
-    log: true,
-  });
+  // const etherToken = await deploy("WETH9", {
+  //   from: deployer,
+  //   args: [],
+  //   log: true,
+  // });
+
+  // await hre.run('verify:verify', {
+  //   address: etherToken.address,
+  //   constructorArguments: [],
+  // })
+
+  const etherToken = {
+    'address': '0x4fac0386c4045b52756b206db3148201e42b3f62'
+  };
 
   // Dummy ERC20 tokens
-  for (const token of erc20TokenInfo) {
-    const totalSupply = "1000000000000000000000000000";
-    const dummyErc20Token = await deploy("DummyERC20Token", {
-      from: deployer,
-      args: [token.name, token.symbol, token.decimals.toString(), totalSupply],
-      log: true,
-    });
-  }
+  // for (const token of erc20TokenInfo) {
+  //   const totalSupply = "1000000000000000000000000000";
+  //   const dummyErc20Token = await deploy("DummyERC20Token", {
+  //     from: deployer,
+  //     args: [token.name, token.symbol, token.decimals.toString(), totalSupply],
+  //     log: true,
+  //   });
 
-  const cryptoKittieToken = await deploy("DummyERC721Token", {
-    from: deployer,
-    args: [erc721TokenInfo[0].name, erc721TokenInfo[0].symbol],
-    log: true,
-  });
-
-  // 1155 Asset Proxy
-  const erc1155Proxy = await deploy("ERC1155Proxy", {
-    from: deployer,
-    args: [],
-    log: true,
-  });
+  //   await hre.run('verify:verify', {
+  //     address: dummyErc20Token.address,
+  //     constructorArguments: [token.name, token.symbol, token.decimals.toString(), totalSupply],
+  //   })
+  // }
 
   const staticCallProxy = await deploy("StaticCallProxy", {
     from: deployer,
@@ -66,140 +70,9 @@ const func = async function ({ deployments, getNamedAccounts, getChainId }) {
     log: true,
   });
 
-  const multiAssetProxy = await deploy("MultiAssetProxy", {
-    from: deployer,
-    args: [],
-    log: true,
-  });
-
-  await execute("ERC20Proxy", { from: deployer }, "addAuthorizedAddress", exchange.address);
-  await execute("ERC721Proxy", { from: deployer }, "addAuthorizedAddress", exchange.address);
-  await execute("ERC1155Proxy", { from: deployer }, "addAuthorizedAddress", exchange.address);
-  await execute("MultiAssetProxy", { from: deployer }, "addAuthorizedAddress", exchange.address);
-
-  // MultiAssetProxy
-  await execute("ERC20Proxy", { from: deployer }, "addAuthorizedAddress", multiAssetProxy.address);
-  await execute("ERC721Proxy", { from: deployer }, "addAuthorizedAddress", multiAssetProxy.address);
-  await execute("ERC1155Proxy", { from: deployer }, "addAuthorizedAddress", multiAssetProxy.address);
-  await execute("MultiAssetProxy", { from: deployer }, "registerAssetProxy", erc20Proxy.address);
-  await execute("MultiAssetProxy", { from: deployer }, "registerAssetProxy", erc721Proxy.address);
-  await execute("MultiAssetProxy", { from: deployer }, "registerAssetProxy", erc1155Proxy.address);
-  await execute("MultiAssetProxy", { from: deployer }, "registerAssetProxy", staticCallProxy.address);
-
-  await execute("Exchange", { from: deployer }, "registerAssetProxy", erc20Proxy.address);
-  await execute("Exchange", { from: deployer }, "registerAssetProxy", erc721Proxy.address);
-  await execute("Exchange", { from: deployer }, "registerAssetProxy", erc1155Proxy.address);
-  await execute("Exchange", { from: deployer }, "registerAssetProxy", multiAssetProxy.address);
-  await execute("Exchange", { from: deployer }, "registerAssetProxy", staticCallProxy.address);
-
-  // CoordinatorRegistry
-  const coordinatorRegistry = await deploy("CoordinatorRegistry", { from: deployer, log: true, args: [] });
-
-  // Coordinator
-  const coordinator = await deploy("Coordinator", {
-    from: deployer,
-    log: true,
-    args: [exchange.address, chainId],
-  });
-
-  // Dev Utils
-  const libAssetData = await deploy("LibAssetData", {
-    from: deployer,
-    log: true,
-  });
-  const libDydxBalance = await deploy("LibDydxBalance", {
-    from: deployer,
-    log: true,
-    libraries: { LibAssetData: libAssetData.address },
-  });
-  const libOrderTransferSimulation = await deploy("LibOrderTransferSimulation", {
-    from: deployer,
-    log: true,
-  });
-  const libTransactionDecoder = await deploy("LibTransactionDecoder", {
-    from: deployer,
-    log: true,
-  });
-  const devUtils = await deploy("DevUtils", {
-    from: deployer,
-    log: true,
-    args: [exchange.address, NULL_ADDRESS, NULL_ADDRESS],
-    libraries: {
-      LibAssetData: libAssetData.address,
-      LibDydxBalance: libDydxBalance.address,
-      LibOrderTransferSimulation: libOrderTransferSimulation.address,
-      LibTransactionDecoder: libTransactionDecoder.address,
-    },
-  });
-
-  const erc1155DummyToken = await deploy("ERC1155Mintable", {
-    from: deployer,
-    log: true,
-  });
-  const erc20BridgeProxy = await deploy("ERC20BridgeProxy", {
-    from: deployer,
-    log: true,
-  });
-
-  await execute("Exchange", { from: deployer }, "registerAssetProxy", erc20BridgeProxy.address);
-  await execute("ERC20BridgeProxy", { from: deployer }, "addAuthorizedAddress", exchange.address);
-  await execute("ERC20BridgeProxy", { from: deployer }, "addAuthorizedAddress", multiAssetProxy.address);
-  await execute("MultiAssetProxy", { from: deployer }, "registerAssetProxy", erc20BridgeProxy.address);
-
-  const zrxProxy = erc20Proxy.address;
-  const zrxVault = await deploy("ZrxVault", {
-    from: deployer,
-    log: true,
-    args: [zrxProxy, zrxToken.address],
-  });
-
-  // Note we use TestStakingContract as the deployed bytecode of a StakingContract
-  // has the tokens hardcoded
-  const stakingLogic = await deploy("TestStaking", {
-    from: deployer,
-    log: true,
-    args: [etherToken.address, zrxVault.address],
-  });
-
-  const stakingProxy = await deploy("StakingProxy", {
-    from: deployer,
-    log: true,
-    args: [stakingLogic.address],
-  });
-
-  await execute("ERC20Proxy", { from: deployer }, "addAuthorizedAddress", zrxVault.address);
-
-  // Reference the Proxy as the StakingContract for setup
-  const stakingDel = (await ethers.getContractFactory("TestStaking")).attach(stakingProxy.address);
-  await execute("StakingProxy", { from: deployer }, "addAuthorizedAddress", deployer);
-  await stakingDel.addExchangeAddress(exchange.address, { from: deployer });
-  await execute("Exchange", { from: deployer }, "setProtocolFeeCollectorAddress", stakingProxy.address);
-  await execute("Exchange", { from: deployer }, "setProtocolFeeMultiplier", "70000");
-
-  await execute("ZrxVault", { from: deployer }, "addAuthorizedAddress", deployer);
-  await execute("ZrxVault", { from: deployer }, "setStakingProxy", stakingProxy.address);
-  await execute("TestStaking", { from: deployer }, "addAuthorizedAddress", deployer);
-  await execute("TestStaking", { from: deployer }, "addExchangeAddress", exchange.address);
-
-  // Forwarder
-  // Deployed after Exchange and Staking is configured as it queries
-  // in the constructor
-  const exchangeV2 = exchange;
-  const exchangeV2Address = exchangeV2.address;
-  const forwarder = await deploy("Forwarder", {
-    from: deployer,
-    log: true,
-    args: [exchange.address, exchangeV2Address || NULL_ADDRESS, etherToken.address],
-  });
-
-  // JAM
-  const jamToken = await deploy("DummyERC20Token", {
-    from: deployer,
-    log: true,
-    args: ["JAM Token", "JAM", 18, "1000000000000000000000000000"],
-  });
-
   // Exchange Proxy //////////////////////////////////////////////////////////
+
+  await hre.run("set:compile:one", { contractName: "BridgeAdapter"});
 
   const bridgeAdapter = await deploy("BridgeAdapter", {
     from: deployer,
@@ -207,62 +80,238 @@ const func = async function ({ deployments, getNamedAccounts, getChainId }) {
     args: [etherToken.address],
   });
 
-  const migrator = await deploy("FullMigration", {
+
+  // const migrator = await deploy("FullMigration", {
+  //   from: deployer,
+  //   log: true,
+  //   args: [deployer],
+  // });
+
+  await hre.run("set:compile:one", { contractName: "FullMigration"});
+  const migrator = await FullMigration.new(deployer);
+
+  console.log("Migrator deployed to: ", migrator.address);
+
+  const getBootstrapper = await migrator.getBootstrapper();
+
+  await hre.run("set:compile:one", { contractName: "ZeroEx"});
+  const zeroEx = await deploy("ZeroEx", {
     from: deployer,
     log: true,
-    args: [deployer],
+    args: [getBootstrapper]
   });
-  // const zeroEx = await ZeroExContract.deployFrom0xArtifactAsync(
-  //     artifacts.ZeroEx,
-  //     provider,
-  //     txDefaults,
-  //     artifacts,
-  //     await migrator.getBootstrapper().callAsync(),
-  // );
-  // const _config = { ...config, zeroExAddress: zeroEx.address };
-  // const _features = await deployFullFeaturesAsync(provider, txDefaults, _config, features, featureArtifacts);
-  // const migrateOpts = {
-  //     transformerDeployer: txDefaults.from as string,
-  //     ..._config,
-  // };
-  // await migrator.migrateZeroEx(owner, zeroEx.address, _features, migrateOpts).awaitTransactionSuccessAsync();
-  // const exchangeProxy = await fullMigrateExchangeProxyAsync(txDefaults.from, provider, txDefaults);
-  // const exchangeProxyFlashWalletAddress = await exchangeProxy.getTransformWallet().callAsync();
 
-  // // Deploy transformers.
-  // const wethTransformer = await WethTransformerContract.deployFrom0xArtifactAsync(
-  //   exchangeProxyArtifacts.WethTransformer,
-  //   provider,
-  //   txDefaults,
-  //   allArtifacts,
-  //   etherToken.address
-  // );
-  // const payTakerTransformer = await PayTakerTransformerContract.deployFrom0xArtifactAsync(
-  //   exchangeProxyArtifacts.PayTakerTransformer,
-  //   provider,
-  //   txDefaults,
-  //   allArtifacts
-  // );
-  // const affiliateFeeTransformer = await AffiliateFeeTransformerContract.deployFrom0xArtifactAsync(
-  //   exchangeProxyArtifacts.AffiliateFeeTransformer,
-  //   provider,
-  //   txDefaults,
-  //   allArtifacts
-  // );
-  // const fillQuoteTransformer = await FillQuoteTransformerContract.deployFrom0xArtifactAsync(
-  //   exchangeProxyArtifacts.FillQuoteTransformer,
-  //   provider,
-  //   txDefaults,
-  //   allArtifacts,
-  //   bridgeAdapter.address,
-  //   exchangeProxy.address
-  // );
-  // const positiveSlippageFeeTransformer = await PositiveSlippageFeeTransformerContract.deployFrom0xArtifactAsync(
-  //   exchangeProxyArtifacts.PositiveSlippageFeeTransformer,
-  //   provider,
-  //   txDefaults,
-  //   allArtifacts
-  // );
+  const _config = {
+    zeroExAddress: zeroEx.address,
+    wethAddress: etherToken.address,
+    stakingAddress: NULL_ADDRESS,
+    protocolFeeMultiplier: '100',
+    transformerDeployer: txDefaultObj.from
+  }
+
+  await hre.run("set:compile:one", { contractName: "FeeCollectorController"});
+  const feeCollectorController = await deploy("FeeCollectorController", {
+    from: deployer,
+    log: true,
+    args: [etherToken.address, _config.stakingAddress],
+  });
+
+  await hre.run("set:compile:one", { contractName: "TransformERC20Feature"});
+  const transformERC20 = await deploy("TransformERC20Feature", {
+    from: deployer,
+    log: true,
+    args: [],
+  });
+  
+  await hre.run("set:compile:one", { contractName: "NativeOrdersFeature"});
+  const nativeOrders = await deploy("NativeOrdersFeature", {
+    from: deployer,
+    log: true,
+    args: [_config.zeroExAddress, _config.wethAddress, _config.stakingAddress, feeCollectorController.address, _config.protocolFeeMultiplier],
+  });
+
+  await hre.run("set:compile:one", { contractName: "MatchOrdersFeature"});
+  const matchOrders = await deploy("MatchOrdersFeature", {
+    from: deployer,
+    log: true,
+    args: [_config.zeroExAddress],
+  });
+  
+  await hre.run("set:compile:one", { contractName: "LimitOrderFeature"});
+  const limitOrder = await deploy("LimitOrderFeature", {
+    from: deployer,
+    log: true,
+    args: [_config.zeroExAddress],
+  });
+  
+  await hre.run("set:compile:one", { contractName: "SimpleFunctionRegistryFeature"});
+  const registry = await deploy("SimpleFunctionRegistryFeature", {
+    from: deployer,
+    log: true,
+    args: [],
+  });
+  
+  await hre.run("set:compile:one", { contractName: "OwnableFeature"});
+  const ownable = await deploy("OwnableFeature", {
+    from: deployer,
+    log: true,
+    args: [],
+  });
+
+  const _features = {
+    registry: registry.address,
+    ownable: ownable.address,
+    transformERC20: transformERC20.address,
+    nativeOrders: nativeOrders.address,
+    matchOrders: matchOrders.address,
+    limitOrder: limitOrder.address
+  };
+
+
+
+  await migrator.migrateZeroEx(deployer, zeroEx.address, _features, _config);
+
+
+  const exchangeProxy = IZeroEx.at(zeroEx.address);
+
+  await hre.run("set:compile:one", { contractName: "WethTransformer"});
+  const wethTransformer = await deploy("WethTransformer", {
+    from: deployer,
+    log: true,
+    args: [etherToken.address],
+  });
+
+  await hre.run("set:compile:one", { contractName: "PayTakerTransformer"});
+  const payTakerTransformer = await deploy("PayTakerTransformer", {
+    from: deployer,
+    log: true,
+    args: [],
+  });
+
+  await hre.run("set:compile:one", { contractName: "AffiliateFeeTransformer"});
+  const affiliateFeeTransformer = await deploy("AffiliateFeeTransformer", {
+    from: deployer,
+    log: true,
+    args: [],
+  });
+
+  await hre.run("set:compile:one", { contractName: "FillQuoteTransformer"});
+  const fillQuoteTransformer = await deploy("FillQuoteTransformer", {
+    from: deployer,
+    log: true,
+    args: [bridgeAdapter.address, zeroEx.address],
+  });
+
+  await hre.run("set:compile:one", { contractName: "PositiveSlippageFeeTransformer"});
+  const positiveSlippageFeeTransformer = await deploy("PositiveSlippageFeeTransformer", {
+    from: deployer,
+    log: true,
+    args: [],
+  });
+
+  await hre.run('verify:verify', {
+    address: erc20Proxy.address,
+    constructorArguments: [],
+  })
+
+  await hre.run('verify:verify', {
+    address: zrxToken.address,
+    constructorArguments: ["0x Protocol Token", "ZRX", 18, "1000000000000000000000000000"],
+  })
+  
+  await hre.run('verify:verify', {
+    address: abcToken.address,
+    constructorArguments: ["ABC TOKEN", "ABC", 18, "1000000000000000000000000000"],
+  })
+  
+  await hre.run('verify:verify', {
+    address: staticCallProxy.address,
+    constructorArguments: [],
+  })
+  
+  await hre.run('verify:verify', {
+    address: bridgeAdapter.address,
+    constructorArguments: [etherToken.address],
+  })
+  await hre.run('verify:verify', {
+    address: migrator.address,
+    constructorArguments: [deployer],
+  })
+  await hre.run('verify:verify', {
+    address: zeroEx.address,
+    constructorArguments: [getBootstrapper],
+  })
+  await hre.run('verify:verify', {
+    address: feeCollectorController.address,
+    constructorArguments: [etherToken.address, _config.stakingAddress],
+  })
+  await hre.run('verify:verify', {
+    address: transformERC20.address,
+    constructorArguments: [],
+  })
+  await hre.run('verify:verify', {
+    address: nativeOrders.address,
+    constructorArguments: [_config.zeroExAddress, _config.wethAddress, _config.stakingAddress, feeCollectorController.address, _config.protocolFeeMultiplier],
+  })
+  await hre.run('verify:verify', {
+    address: matchOrders.address,
+    constructorArguments: [_config.zeroExAddress],
+  })
+  await hre.run('verify:verify', {
+    address: limitOrder.address,
+    constructorArguments: [_config.zeroExAddress],
+  })
+  await hre.run('verify:verify', {
+    address: registry.address,
+    constructorArguments: [],
+  })
+  await hre.run('verify:verify', {
+    address: ownable.address,
+    constructorArguments: [],
+  })
+  await hre.run('verify:verify', {
+    address: wethTransformer.address,
+    constructorArguments: [etherToken.address],
+  })
+  await hre.run('verify:verify', {
+    address: payTakerTransformer.address,
+    constructorArguments: [],
+  })
+  await hre.run('verify:verify', {
+    address: affiliateFeeTransformer.address,
+    constructorArguments: [],
+  })
+  await hre.run('verify:verify', {
+    address: fillQuoteTransformer.address,
+    constructorArguments: [bridgeAdapter.address, zeroEx.address],
+  })
+
+  await hre.run('verify:verify', {
+    address: positiveSlippageFeeTransformer.address,
+    constructorArguments: [],
+  })
+
+  console.log("----------------COPY HERE------------------>");
+  console.log(`ERC20_PROXY=${erc20Proxy.address}`);
+  console.log(`ZRX_TOKEN=${zrxToken.address}`);
+  console.log(`STATIC_CALL_PROXY=${staticCallProxy.address}`);
+  console.log(`ZRX_VAULT=${NULL_ADDRESS}`);
+  console.log(`EXCHANGE_PROXY=${zeroEx.address}`);
+  console.log(`EXCHANGE_PROXY_TRANSFORMER_DEPLOYER=${txDefaultObj.from}`);
+  console.log(`EXCHANGE_PROXY_FLASH_WALLET=${NULL_ADDRESS}`);
+  console.log(`PAY_TAKER_TRANSFORMER=${payTakerTransformer.address}`);
+  console.log(`AFFILIATE_FEE_TRANSFORMER=${affiliateFeeTransformer.address}`);
+  console.log(`POSITIVE_SLIPPAGE_FEE_TRANSFORMER=${positiveSlippageFeeTransformer.address}`);
+  console.log(`DEFAULT_PROPERTY_CONTRACT_VALUE=0x0000000000000000000000000000000000000000`);
+  console.log(`ABC_TOKEN=${abcToken.address}`);
+
+  console.log(`REGISTRY=${_features.registry}`);
+  console.log(`OWNABLE=${_features.ownable}`);
+  console.log(`TRANSFORM_ERC20=${_features.transformERC20}`);
+  console.log(`NATIVE_ORDERS=${_features.nativeOrders}`);
+  console.log(`MATCH_ORDERS=${_features.matchOrders}`);
+  console.log(`LIMIT_ORDER=${_features.limitOrder}`);
+  console.log("----------------END HERE------------------>");
 };
 
 module.exports = func;

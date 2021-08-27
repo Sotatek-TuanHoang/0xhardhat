@@ -398,12 +398,9 @@ contract MatchOrdersFeature is
             matchedFillResults.takerAmountFinal = buyAmountRemaining.safeMul(matchInfo.price).safeDiv(decimal);
             // fee
             matchedFillResults.sellFeePaid = getFeeMatch(
-                sellRemaining,
-                sellAmountRemaining,
+                sellOrder,
                 matchInfo.sellType,
-                sellOrder.takerTokenFeeAmount,
-                matchedFillResults.makerAmountFinal,
-                matchedFillResults.takerAmountFinal
+                matchedFillResults
             );
             matchedFillResults.buyFeePaid = LibNativeOrdersStorage.getStorage().orderHashToFeeAmountRemaining[matchInfo.buyOrderHash];
 
@@ -414,12 +411,9 @@ contract MatchOrdersFeature is
             //fee
             matchedFillResults.sellFeePaid = LibNativeOrdersStorage.getStorage().orderHashToFeeAmountRemaining[matchInfo.sellOrderHash];
             matchedFillResults.buyFeePaid = getFeeMatch(
-                buyRemaining,
-                buyAmountRemaining,
+                buyOrder,
                 matchInfo.buyType,
-                buyOrder.takerTokenFeeAmount,
-                matchedFillResults.makerAmountFinal,
-                matchedFillResults.takerAmountFinal
+                matchedFillResults
             );
         }
 
@@ -449,27 +443,24 @@ contract MatchOrdersFeature is
     }
 
     function getFeeMatch(
-        uint256 remaining,
-        uint256 amountRemaining,
+        LibNativeOrder.LimitOrder memory order,
         uint256 typeOrder,
-        uint256 feeTotal,
-        uint256 makerAmountFinal,
-        uint256 takerAmountFinal
+        LibNativeOrder.MatchedFillResults memory matchedFillResults
     )
     internal
     view
     returns (uint256 fee) {
         if (typeOrder == LibNativeOrder.MATCH_AMOUNT) {
             fee = LibMathV06.safeGetPartialAmountFloor(
-                makerAmountFinal,
-                amountRemaining,
-                feeTotal
+                matchedFillResults.makerAmountFinal,
+                order.makerAmount,
+                order.takerTokenFeeAmount
             );
         } else {
             fee = LibMathV06.safeGetPartialAmountFloor(
-                takerAmountFinal,
-                remaining,
-                feeTotal
+                matchedFillResults.takerAmountFinal,
+                order.takerAmount,
+                order.takerTokenFeeAmount
             );
         }
     }

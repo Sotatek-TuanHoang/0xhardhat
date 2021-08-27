@@ -5,6 +5,9 @@ require("@nomiclabs/hardhat-waffle");
 require("@nomiclabs/hardhat-truffle5");
 require("@nomiclabs/hardhat-etherscan");
 require("@nomiclabs/hardhat-ethers");
+// require("@typechain/hardhat");
+require("./tasks/compileOne.js");
+// require("@setprotocol/index-coop-contracts");
 
 /**
  * @type import('hardhat/config').HardhatUserConfig
@@ -26,6 +29,10 @@ module.exports = {
     },
     evrynet: {
       url: "http://localhost:22001",
+      accounts: [process.env.RINKEBY_PRIVATE_KEY],
+    },
+    bsctestnet: {
+      url: "https://data-seed-prebsc-2-s2.binance.org:8545/",
       accounts: [process.env.RINKEBY_PRIVATE_KEY],
     },
   },

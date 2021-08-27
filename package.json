@@ -32,5 +32,12 @@
     "ethers": "5.2.0",
     "hardhat": "2.3.0",
     "hardhat-deploy": "0.7.9"
+  },
+  "dependencies": {
+    "@setprotocol/index-coop-contracts": "^0.0.26",
+    "@typechain/hardhat": "^2.3.0",
+    "hardhat-typechain": "^0.3.5",
+    "solidity-coverage": "^0.7.16",
+    "typechain": "^5.1.2"
   }
 }

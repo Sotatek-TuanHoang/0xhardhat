@@ -1,0 +1,557 @@
+{
+  "address": "0xD5a7d2Ef61ceAf22154bA27F96F36711e323Cee4",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_symbol",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_decimals",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_totalSupply",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_spender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Approval",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Transfer",
+      "type": "event"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "MAX_MINT_AMOUNT",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_spender",
+          "type": "address"
+        }
+      ],
+      "name": "allowance",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_spender",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "approve",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "decimals",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "mint",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "name",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_target",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "setBalance",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "symbol",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "totalSupply",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "transfer",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "transferFrom",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xe2312c64fb61debb29d16cab0f76b9340104301216247ea1a174102b42c0d841",
+  "receipt": {
+    "to": null,
+    "from": "0x2D4159A016fD5318da2057a2173d48Dc11af314e",
+    "contractAddress": "0xD5a7d2Ef61ceAf22154bA27F96F36711e323Cee4",
+    "transactionIndex": 4,
+    "gasUsed": "985922",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x690e48b4d41d04e688c62d05b9a4f4b05dbbf09788c4aa7453a13f46695b1840",
+    "transactionHash": "0xe2312c64fb61debb29d16cab0f76b9340104301216247ea1a174102b42c0d841",
+    "logs": [],
+    "blockNumber": 11839280,
+    "cumulativeGasUsed": "3594738",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "ABC TOKEN",
+    "ABC",
+    18,
+    "1000000000000000000000000000"
+  ],
+  "solcInputHash": "bd279127cccaced22aef07aad44a1173",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_symbol\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"_decimals\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_totalSupply\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_spender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"constant\":true,\"inputs\":[],\"name\":\"MAX_MINT_AMOUNT\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_spender\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"_spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"mint\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"_target\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"setBalance\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"_to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"_from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"allowance(address,address)\":{\"params\":{\"_owner\":\"The address of the account owning tokens\",\"_spender\":\"The address of the account able to transfer the tokens\"},\"return\":\"Amount of remaining tokens allowed to spent\"},\"approve(address,uint256)\":{\"details\":\"`msg.sender` approves `_spender` to spend `_value` tokens\",\"params\":{\"_spender\":\"The address of the account able to transfer the tokens\",\"_value\":\"The amount of wei to be approved for transfer\"},\"return\":\"Always true if the call has enough gas to complete execution\"},\"balanceOf(address)\":{\"details\":\"Query the balance of owner\",\"params\":{\"_owner\":\"The address from which the balance will be retrieved\"},\"return\":\"Balance of owner\"},\"mint(uint256)\":{\"details\":\"Mints new tokens for sender\",\"params\":{\"_value\":\"Amount of tokens to mint\"}},\"setBalance(address,uint256)\":{\"details\":\"Sets the balance of target address\",\"params\":{\"_target\":\"Address or which balance will be updated\",\"_value\":\"New balance of target address\"}},\"totalSupply()\":{\"details\":\"Query total supply of token\",\"return\":\"Total supply of token\"},\"transfer(address,uint256)\":{\"details\":\"send `value` token to `to` from `msg.sender`\",\"params\":{\"_to\":\"The address of the recipient\",\"_value\":\"The amount of token to be transferred\"},\"return\":\"True if transfer was successful\"},\"transferFrom(address,address,uint256)\":{\"details\":\"ERC20 transferFrom, modified such that an allowance of MAX_UINT represents an unlimited allowance. See https://github.com/ethereum/EIPs/issues/717\",\"params\":{\"_from\":\"Address to transfer from.\",\"_to\":\"Address to transfer to.\",\"_value\":\"Amount to transfer.\"},\"return\":\"Success of transfer.\"},\"transferOwnership(address)\":{\"details\":\"Change the owner of this contract.\",\"params\":{\"newOwner\":\"New owner address.\"}}}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"contracts/erc20/contracts/test/DummyERC20Token.sol\":\"DummyERC20Token\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"useLiteralContent\":true},\"optimizer\":{\"details\":{\"constantOptimizer\":true,\"cse\":true,\"deduplicate\":true,\"jumpdestRemover\":true,\"orderLiterals\":true,\"peephole\":true,\"yul\":true,\"yulDetails\":{\"stackAllocation\":true}},\"runs\":1000000},\"remappings\":[]},\"sources\":{\"@0x/contracts-utils/contracts/src/LibOwnableRichErrors.sol\":{\"content\":\"pragma solidity ^0.5.9;\\n\\n\\nlibrary LibOwnableRichErrors {\\n\\n    // bytes4(keccak256(\\\"OnlyOwnerError(address,address)\\\"))\\n    bytes4 internal constant ONLY_OWNER_ERROR_SELECTOR =\\n        0x1de45ad1;\\n\\n    // bytes4(keccak256(\\\"TransferOwnerToZeroError()\\\"))\\n    bytes internal constant TRANSFER_OWNER_TO_ZERO_ERROR_BYTES =\\n        hex\\\"e69edc3e\\\";\\n\\n    // solhint-disable func-name-mixedcase\\n    function OnlyOwnerError(\\n        address sender,\\n        address owner\\n    )\\n        internal\\n        pure\\n        returns (bytes memory)\\n    {\\n        return abi.encodeWithSelector(\\n            ONLY_OWNER_ERROR_SELECTOR,\\n            sender,\\n            owner\\n        );\\n    }\\n\\n    function TransferOwnerToZeroError()\\n        internal\\n        pure\\n        returns (bytes memory)\\n    {\\n        return TRANSFER_OWNER_TO_ZERO_ERROR_BYTES;\\n    }\\n}\\n\",\"keccak256\":\"0xfe1658c79678842a12d9b5841157eb871aaa810ed8a0223c715f49ad4c71d690\"},\"@0x/contracts-utils/contracts/src/LibRichErrors.sol\":{\"content\":\"/*\\n\\n  Copyright 2019 ZeroEx Intl.\\n\\n  Licensed under the Apache License, Version 2.0 (the \\\"License\\\");\\n  you may not use this file except in compliance with the License.\\n  You may obtain a copy of the License at\\n\\n    http://www.apache.org/licenses/LICENSE-2.0\\n\\n  Unless required by applicable law or agreed to in writing, software\\n  distributed under the License is distributed on an \\\"AS IS\\\" BASIS,\\n  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\\n  See the License for the specific language governing permissions and\\n  limitations under the License.\\n\\n*/\\n\\npragma solidity ^0.5.9;\\n\\n\\nlibrary LibRichErrors {\\n\\n    // bytes4(keccak256(\\\"Error(string)\\\"))\\n    bytes4 internal constant STANDARD_ERROR_SELECTOR =\\n        0x08c379a0;\\n\\n    // solhint-disable func-name-mixedcase\\n    /// @dev ABI encode a standard, string revert error payload.\\n    ///      This is the same payload that would be included by a `revert(string)`\\n    ///      solidity statement. It has the function signature `Error(string)`.\\n    /// @param message The error string.\\n    /// @return The ABI encoded error.\\n    function StandardError(\\n        string memory message\\n    )\\n        internal\\n        pure\\n        returns (bytes memory)\\n    {\\n        return abi.encodeWithSelector(\\n            STANDARD_ERROR_SELECTOR,\\n            bytes(message)\\n        );\\n    }\\n    // solhint-enable func-name-mixedcase\\n\\n    /// @dev Reverts an encoded rich revert reason `errorData`.\\n    /// @param errorData ABI encoded error data.\\n    function rrevert(bytes memory errorData)\\n        internal\\n        pure\\n    {\\n        assembly {\\n            revert(add(errorData, 0x20), mload(errorData))\\n        }\\n    }\\n}\\n\",\"keccak256\":\"0xe3ce6ded2fea3cc80998ca4d364bda530e273af0ba1c78d22a6cdadb6f64186e\"},\"@0x/contracts-utils/contracts/src/LibSafeMath.sol\":{\"content\":\"pragma solidity ^0.5.9;\\n\\nimport \\\"./LibRichErrors.sol\\\";\\nimport \\\"./LibSafeMathRichErrors.sol\\\";\\n\\n\\nlibrary LibSafeMath {\\n\\n    function safeMul(uint256 a, uint256 b)\\n        internal\\n        pure\\n        returns (uint256)\\n    {\\n        if (a == 0) {\\n            return 0;\\n        }\\n        uint256 c = a * b;\\n        if (c / a != b) {\\n            LibRichErrors.rrevert(LibSafeMathRichErrors.Uint256BinOpError(\\n                LibSafeMathRichErrors.BinOpErrorCodes.MULTIPLICATION_OVERFLOW,\\n                a,\\n                b\\n            ));\\n        }\\n        return c;\\n    }\\n\\n    function safeDiv(uint256 a, uint256 b)\\n        internal\\n        pure\\n        returns (uint256)\\n    {\\n        if (b == 0) {\\n            LibRichErrors.rrevert(LibSafeMathRichErrors.Uint256BinOpError(\\n                LibSafeMathRichErrors.BinOpErrorCodes.DIVISION_BY_ZERO,\\n                a,\\n                b\\n            ));\\n        }\\n        uint256 c = a / b;\\n        return c;\\n    }\\n\\n    function safeSub(uint256 a, uint256 b)\\n        internal\\n        pure\\n        returns (uint256)\\n    {\\n        if (b > a) {\\n            LibRichErrors.rrevert(LibSafeMathRichErrors.Uint256BinOpError(\\n                LibSafeMathRichErrors.BinOpErrorCodes.SUBTRACTION_UNDERFLOW,\\n                a,\\n                b\\n            ));\\n        }\\n        return a - b;\\n    }\\n\\n    function safeAdd(uint256 a, uint256 b)\\n        internal\\n        pure\\n        returns (uint256)\\n    {\\n        uint256 c = a + b;\\n        if (c < a) {\\n            LibRichErrors.rrevert(LibSafeMathRichErrors.Uint256BinOpError(\\n                LibSafeMathRichErrors.BinOpErrorCodes.ADDITION_OVERFLOW,\\n                a,\\n                b\\n            ));\\n        }\\n        return c;\\n    }\\n\\n    function max256(uint256 a, uint256 b)\\n        internal\\n        pure\\n        returns (uint256)\\n    {\\n        return a >= b ? a : b;\\n    }\\n\\n    function min256(uint256 a, uint256 b)\\n        internal\\n        pure\\n        returns (uint256)\\n    {\\n        return a < b ? a : b;\\n    }\\n}\\n\",\"keccak256\":\"0xd0da9ac1905381832f6612774cb7eced3b4b60459d6bafa59f5424955b44c935\"},\"@0x/contracts-utils/contracts/src/LibSafeMathRichErrors.sol\":{\"content\":\"pragma solidity ^0.5.9;\\n\\n\\nlibrary LibSafeMathRichErrors {\\n\\n    // bytes4(keccak256(\\\"Uint256BinOpError(uint8,uint256,uint256)\\\"))\\n    bytes4 internal constant UINT256_BINOP_ERROR_SELECTOR =\\n        0xe946c1bb;\\n\\n    // bytes4(keccak256(\\\"Uint256DowncastError(uint8,uint256)\\\"))\\n    bytes4 internal constant UINT256_DOWNCAST_ERROR_SELECTOR =\\n        0xc996af7b;\\n\\n    enum BinOpErrorCodes {\\n        ADDITION_OVERFLOW,\\n        MULTIPLICATION_OVERFLOW,\\n        SUBTRACTION_UNDERFLOW,\\n        DIVISION_BY_ZERO\\n    }\\n\\n    enum DowncastErrorCodes {\\n        VALUE_TOO_LARGE_TO_DOWNCAST_TO_UINT32,\\n        VALUE_TOO_LARGE_TO_DOWNCAST_TO_UINT64,\\n        VALUE_TOO_LARGE_TO_DOWNCAST_TO_UINT96\\n    }\\n\\n    // solhint-disable func-name-mixedcase\\n    function Uint256BinOpError(\\n        BinOpErrorCodes errorCode,\\n        uint256 a,\\n        uint256 b\\n    )\\n        internal\\n        pure\\n        returns (bytes memory)\\n    {\\n        return abi.encodeWithSelector(\\n            UINT256_BINOP_ERROR_SELECTOR,\\n            errorCode,\\n            a,\\n            b\\n        );\\n    }\\n\\n    function Uint256DowncastError(\\n        DowncastErrorCodes errorCode,\\n        uint256 a\\n    )\\n        internal\\n        pure\\n        returns (bytes memory)\\n    {\\n        return abi.encodeWithSelector(\\n            UINT256_DOWNCAST_ERROR_SELECTOR,\\n            errorCode,\\n            a\\n        );\\n    }\\n}\\n\",\"keccak256\":\"0xcf6adae04bd7af8e41fcd40ad148cc3d1cd5596bd42b01961b735c9b416a6572\"},\"@0x/contracts-utils/contracts/src/Ownable.sol\":{\"content\":\"/*\\n\\n  Copyright 2019 ZeroEx Intl.\\n\\n  Licensed under the Apache License, Version 2.0 (the \\\"License\\\");\\n  you may not use this file except in compliance with the License.\\n  You may obtain a copy of the License at\\n\\n    http://www.apache.org/licenses/LICENSE-2.0\\n\\n  Unless required by applicable law or agreed to in writing, software\\n  distributed under the License is distributed on an \\\"AS IS\\\" BASIS,\\n  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\\n  See the License for the specific language governing permissions and\\n  limitations under the License.\\n\\n*/\\n\\npragma solidity ^0.5.9;\\n\\nimport \\\"./interfaces/IOwnable.sol\\\";\\nimport \\\"./LibOwnableRichErrors.sol\\\";\\nimport \\\"./LibRichErrors.sol\\\";\\n\\n\\ncontract Ownable is\\n    IOwnable\\n{\\n    /// @dev The owner of this contract.\\n    /// @return 0 The owner address.\\n    address public owner;\\n\\n    constructor ()\\n        public\\n    {\\n        owner = msg.sender;\\n    }\\n\\n    modifier onlyOwner() {\\n        _assertSenderIsOwner();\\n        _;\\n    }\\n\\n    /// @dev Change the owner of this contract.\\n    /// @param newOwner New owner address.\\n    function transferOwnership(address newOwner)\\n        public\\n        onlyOwner\\n    {\\n        if (newOwner == address(0)) {\\n            LibRichErrors.rrevert(LibOwnableRichErrors.TransferOwnerToZeroError());\\n        } else {\\n            owner = newOwner;\\n            emit OwnershipTransferred(msg.sender, newOwner);\\n        }\\n    }\\n\\n    function _assertSenderIsOwner()\\n        internal\\n        view\\n    {\\n        if (msg.sender != owner) {\\n            LibRichErrors.rrevert(LibOwnableRichErrors.OnlyOwnerError(\\n                msg.sender,\\n                owner\\n            ));\\n        }\\n    }\\n}\\n\",\"keccak256\":\"0x98efef6505721d39074374411c0a51229e7d691523b9a2e5dfa90291693cc9c6\"},\"@0x/contracts-utils/contracts/src/interfaces/IOwnable.sol\":{\"content\":\"/*\\n\\n  Copyright 2019 ZeroEx Intl.\\n\\n  Licensed under the Apache License, Version 2.0 (the \\\"License\\\");\\n  you may not use this file except in compliance with the License.\\n  You may obtain a copy of the License at\\n\\n    http://www.apache.org/licenses/LICENSE-2.0\\n\\n  Unless required by applicable law or agreed to in writing, software\\n  distributed under the License is distributed on an \\\"AS IS\\\" BASIS,\\n  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\\n  See the License for the specific language governing permissions and\\n  limitations under the License.\\n\\n*/\\n\\npragma solidity ^0.5.9;\\n\\n\\ncontract IOwnable {\\n\\n    /// @dev Emitted by Ownable when ownership is transferred.\\n    /// @param previousOwner The previous owner of the contract.\\n    /// @param newOwner The new owner of the contract.\\n    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);\\n\\n    /// @dev Transfers ownership of the contract to a new address.\\n    /// @param newOwner The address that will become the owner.\\n    function transferOwnership(address newOwner)\\n        public;\\n}\\n\",\"keccak256\":\"0x0be11d969acb7fccce2ceb38e57509703b8fb82bf2dc86390aa006865d154866\"},\"contracts/erc20/contracts/src/ERC20Token.sol\":{\"content\":\"/*\\n\\n  Copyright 2019 ZeroEx Intl.\\n\\n  Licensed under the Apache License, Version 2.0 (the \\\"License\\\");\\n  you may not use this file except in compliance with the License.\\n  You may obtain a copy of the License at\\n\\n    http://www.apache.org/licenses/LICENSE-2.0\\n\\n  Unless required by applicable law or agreed to in writing, software\\n  distributed under the License is distributed on an \\\"AS IS\\\" BASIS,\\n  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\\n  See the License for the specific language governing permissions and\\n  limitations under the License.\\n\\n*/\\n\\npragma solidity ^0.5.9;\\n\\nimport \\\"./interfaces/IERC20Token.sol\\\";\\n\\n\\ncontract ERC20Token is\\n    IERC20Token\\n{\\n    mapping (address => uint256) internal balances;\\n    mapping (address => mapping (address => uint256)) internal allowed;\\n\\n    uint256 internal _totalSupply;\\n\\n    /// @dev send `value` token to `to` from `msg.sender`\\n    /// @param _to The address of the recipient\\n    /// @param _value The amount of token to be transferred\\n    /// @return True if transfer was successful\\n    function transfer(address _to, uint256 _value)\\n        external\\n        returns (bool)\\n    {\\n        require(\\n            balances[msg.sender] >= _value,\\n            \\\"ERC20_INSUFFICIENT_BALANCE\\\"\\n        );\\n        require(\\n            balances[_to] + _value >= balances[_to],\\n            \\\"UINT256_OVERFLOW\\\"\\n        );\\n\\n        balances[msg.sender] -= _value;\\n        balances[_to] += _value;\\n\\n        emit Transfer(\\n            msg.sender,\\n            _to,\\n            _value\\n        );\\n\\n        return true;\\n    }\\n\\n    /// @dev send `value` token to `to` from `from` on the condition it is approved by `from`\\n    /// @param _from The address of the sender\\n    /// @param _to The address of the recipient\\n    /// @param _value The amount of token to be transferred\\n    /// @return True if transfer was successful\\n    function transferFrom(\\n        address _from,\\n        address _to,\\n        uint256 _value\\n    )\\n        external\\n        returns (bool)\\n    {\\n        require(\\n            balances[_from] >= _value,\\n            \\\"ERC20_INSUFFICIENT_BALANCE\\\"\\n        );\\n        require(\\n            allowed[_from][msg.sender] >= _value,\\n            \\\"ERC20_INSUFFICIENT_ALLOWANCE\\\"\\n        );\\n        require(\\n            balances[_to] + _value >= balances[_to],\\n            \\\"UINT256_OVERFLOW\\\"\\n        );\\n\\n        balances[_to] += _value;\\n        balances[_from] -= _value;\\n        allowed[_from][msg.sender] -= _value;\\n\\n        emit Transfer(\\n            _from,\\n            _to,\\n            _value\\n        );\\n\\n        return true;\\n    }\\n\\n    /// @dev `msg.sender` approves `_spender` to spend `_value` tokens\\n    /// @param _spender The address of the account able to transfer the tokens\\n    /// @param _value The amount of wei to be approved for transfer\\n    /// @return Always true if the call has enough gas to complete execution\\n    function approve(address _spender, uint256 _value)\\n        external\\n        returns (bool)\\n    {\\n        allowed[msg.sender][_spender] = _value;\\n        emit Approval(\\n            msg.sender,\\n            _spender,\\n            _value\\n        );\\n        return true;\\n    }\\n\\n    /// @dev Query total supply of token\\n    /// @return Total supply of token\\n    function totalSupply()\\n        external\\n        view\\n        returns (uint256)\\n    {\\n        return _totalSupply;\\n    }\\n\\n    /// @dev Query the balance of owner\\n    /// @param _owner The address from which the balance will be retrieved\\n    /// @return Balance of owner\\n    function balanceOf(address _owner)\\n        external\\n        view\\n        returns (uint256)\\n    {\\n        return balances[_owner];\\n    }\\n\\n    /// @param _owner The address of the account owning tokens\\n    /// @param _spender The address of the account able to transfer the tokens\\n    /// @return Amount of remaining tokens allowed to spent\\n    function allowance(address _owner, address _spender)\\n        external\\n        view\\n        returns (uint256)\\n    {\\n        return allowed[_owner][_spender];\\n    }\\n}\\n\",\"keccak256\":\"0x3a1926c5330e2155883cbaafc3b6e213302d6a1f82e653eb8561d9a0741a1ba4\"},\"contracts/erc20/contracts/src/MintableERC20Token.sol\":{\"content\":\"/*\\n\\n  Copyright 2019 ZeroEx Intl.\\n\\n  Licensed under the Apache License, Version 2.0 (the \\\"License\\\");\\n  you may not use this file except in compliance with the License.\\n  You may obtain a copy of the License at\\n\\n    http://www.apache.org/licenses/LICENSE-2.0\\n\\n  Unless required by applicable law or agreed to in writing, software\\n  distributed under the License is distributed on an \\\"AS IS\\\" BASIS,\\n  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\\n  See the License for the specific language governing permissions and\\n  limitations under the License.\\n\\n*/\\n\\npragma solidity ^0.5.9;\\n\\nimport \\\"@0x/contracts-utils/contracts/src/LibSafeMath.sol\\\";\\nimport \\\"./UnlimitedAllowanceERC20Token.sol\\\";\\n\\n\\ncontract MintableERC20Token is\\n    UnlimitedAllowanceERC20Token\\n{\\n    using LibSafeMath for uint256;\\n\\n    /// @dev Mints new tokens\\n    /// @param _to Address of the beneficiary that will own the minted token\\n    /// @param _value Amount of tokens to mint\\n    function _mint(address _to, uint256 _value)\\n        internal\\n    {\\n        balances[_to] = _value.safeAdd(balances[_to]);\\n        _totalSupply = _totalSupply.safeAdd(_value);\\n\\n        emit Transfer(\\n            address(0),\\n            _to,\\n            _value\\n        );\\n    }\\n\\n    /// @dev Mints new tokens\\n    /// @param _owner Owner of tokens that will be burned\\n    /// @param _value Amount of tokens to burn\\n    function _burn(address _owner, uint256 _value)\\n        internal\\n    {\\n        balances[_owner] = balances[_owner].safeSub(_value);\\n        _totalSupply = _totalSupply.safeSub(_value);\\n\\n        emit Transfer(\\n            _owner,\\n            address(0),\\n            _value\\n        );\\n    }\\n}\\n\",\"keccak256\":\"0xc52691ad6d7ee09d0be9b678cbff128c1281403e54f1e60b4372c868c2f66266\"},\"contracts/erc20/contracts/src/UnlimitedAllowanceERC20Token.sol\":{\"content\":\"/*\\n\\n  Copyright 2019 ZeroEx Intl.\\n\\n  Licensed under the Apache License, Version 2.0 (the \\\"License\\\");\\n  you may not use this file except in compliance with the License.\\n  You may obtain a copy of the License at\\n\\n    http://www.apache.org/licenses/LICENSE-2.0\\n\\n  Unless required by applicable law or agreed to in writing, software\\n  distributed under the License is distributed on an \\\"AS IS\\\" BASIS,\\n  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\\n  See the License for the specific language governing permissions and\\n  limitations under the License.\\n\\n*/\\n\\npragma solidity ^0.5.9;\\n\\nimport \\\"./ERC20Token.sol\\\";\\n\\n\\ncontract UnlimitedAllowanceERC20Token is\\n    ERC20Token\\n{\\n    uint256 constant internal MAX_UINT = 2**256 - 1;\\n\\n    /// @dev ERC20 transferFrom, modified such that an allowance of MAX_UINT represents an unlimited allowance. See https://github.com/ethereum/EIPs/issues/717\\n    /// @param _from Address to transfer from.\\n    /// @param _to Address to transfer to.\\n    /// @param _value Amount to transfer.\\n    /// @return Success of transfer.\\n    function transferFrom(\\n        address _from,\\n        address _to,\\n        uint256 _value\\n    )\\n        external\\n        returns (bool)\\n    {\\n        uint256 allowance = allowed[_from][msg.sender];\\n        require(\\n            balances[_from] >= _value,\\n            \\\"ERC20_INSUFFICIENT_BALANCE\\\"\\n        );\\n        require(\\n            allowance >= _value,\\n            \\\"ERC20_INSUFFICIENT_ALLOWANCE\\\"\\n        );\\n        require(\\n            balances[_to] + _value >= balances[_to],\\n            \\\"UINT256_OVERFLOW\\\"\\n        );\\n\\n        balances[_to] += _value;\\n        balances[_from] -= _value;\\n        if (allowance < MAX_UINT) {\\n            allowed[_from][msg.sender] -= _value;\\n        }\\n\\n        emit Transfer(\\n            _from,\\n            _to,\\n            _value\\n        );\\n\\n        return true;\\n    }\\n}\\n\",\"keccak256\":\"0xa43e9eb46eb9b1a1b0263e5067fa5687db79e5c5fcc0aef77c4f975c01517858\"},\"contracts/erc20/contracts/src/interfaces/IERC20Token.sol\":{\"content\":\"/*\\n\\n  Copyright 2019 ZeroEx Intl.\\n\\n  Licensed under the Apache License, Version 2.0 (the \\\"License\\\");\\n  you may not use this file except in compliance with the License.\\n  You may obtain a copy of the License at\\n\\n    http://www.apache.org/licenses/LICENSE-2.0\\n\\n  Unless required by applicable law or agreed to in writing, software\\n  distributed under the License is distributed on an \\\"AS IS\\\" BASIS,\\n  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\\n  See the License for the specific language governing permissions and\\n  limitations under the License.\\n\\n*/\\n\\npragma solidity ^0.5.9;\\n\\n\\ncontract IERC20Token {\\n\\n    // solhint-disable no-simple-event-func-name\\n    event Transfer(\\n        address indexed _from,\\n        address indexed _to,\\n        uint256 _value\\n    );\\n\\n    event Approval(\\n        address indexed _owner,\\n        address indexed _spender,\\n        uint256 _value\\n    );\\n\\n    /// @dev send `value` token to `to` from `msg.sender`\\n    /// @param _to The address of the recipient\\n    /// @param _value The amount of token to be transferred\\n    /// @return True if transfer was successful\\n    function transfer(address _to, uint256 _value)\\n        external\\n        returns (bool);\\n\\n    /// @dev send `value` token to `to` from `from` on the condition it is approved by `from`\\n    /// @param _from The address of the sender\\n    /// @param _to The address of the recipient\\n    /// @param _value The amount of token to be transferred\\n    /// @return True if transfer was successful\\n    function transferFrom(\\n        address _from,\\n        address _to,\\n        uint256 _value\\n    )\\n        external\\n        returns (bool);\\n\\n    /// @dev `msg.sender` approves `_spender` to spend `_value` tokens\\n    /// @param _spender The address of the account able to transfer the tokens\\n    /// @param _value The amount of wei to be approved for transfer\\n    /// @return Always true if the call has enough gas to complete execution\\n    function approve(address _spender, uint256 _value)\\n        external\\n        returns (bool);\\n\\n    /// @dev Query total supply of token\\n    /// @return Total supply of token\\n    function totalSupply()\\n        external\\n        view\\n        returns (uint256);\\n\\n    /// @param _owner The address from which the balance will be retrieved\\n    /// @return Balance of owner\\n    function balanceOf(address _owner)\\n        external\\n        view\\n        returns (uint256);\\n\\n    /// @param _owner The address of the account owning tokens\\n    /// @param _spender The address of the account able to transfer the tokens\\n    /// @return Amount of remaining tokens allowed to spent\\n    function allowance(address _owner, address _spender)\\n        external\\n        view\\n        returns (uint256);\\n}\\n\",\"keccak256\":\"0xa2ce97ac96d473e134efa0f62f63c20f7855fe0c9490f277392d2535f7e1cd64\"},\"contracts/erc20/contracts/test/DummyERC20Token.sol\":{\"content\":\"/*\\n\\n  Copyright 2019 ZeroEx Intl.\\n\\n  Licensed under the Apache License, Version 2.0 (the \\\"License\\\");\\n  you may not use this file except in compliance with the License.\\n  You may obtain a copy of the License at\\n\\n    http://www.apache.org/licenses/LICENSE-2.0\\n\\n  Unless required by applicable law or agreed to in writing, software\\n  distributed under the License is distributed on an \\\"AS IS\\\" BASIS,\\n  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\\n  See the License for the specific language governing permissions and\\n  limitations under the License.\\n\\n*/\\n\\npragma solidity ^0.5.5;\\n\\nimport \\\"@0x/contracts-utils/contracts/src/LibSafeMath.sol\\\";\\nimport \\\"@0x/contracts-utils/contracts/src/Ownable.sol\\\";\\nimport \\\"../src/MintableERC20Token.sol\\\";\\n\\n\\ncontract DummyERC20Token is\\n    Ownable,\\n    MintableERC20Token\\n{\\n    using LibSafeMath for uint256;\\n\\n    string public name;\\n    string public symbol;\\n    uint256 public decimals;\\n    uint256 public constant MAX_MINT_AMOUNT = 10000000000000000000000;\\n\\n    constructor (\\n        string memory _name,\\n        string memory _symbol,\\n        uint256 _decimals,\\n        uint256 _totalSupply\\n    )\\n        public\\n    {\\n        name = _name;\\n        symbol = _symbol;\\n        decimals = _decimals;\\n        _totalSupply = _totalSupply;\\n        balances[msg.sender] = _totalSupply;\\n    }\\n\\n    /// @dev Sets the balance of target address\\n    /// @param _target Address or which balance will be updated\\n    /// @param _value New balance of target address\\n    function setBalance(address _target, uint256 _value)\\n        external\\n        onlyOwner\\n    {\\n        uint256 currBalance = balances[_target];\\n        if (_value < currBalance) {\\n            _totalSupply = _totalSupply.safeSub(currBalance.safeSub(_value));\\n        } else {\\n            _totalSupply = _totalSupply.safeAdd(_value.safeSub(currBalance));\\n        }\\n        balances[_target] = _value;\\n    }\\n\\n    /// @dev Mints new tokens for sender\\n    /// @param _value Amount of tokens to mint\\n    function mint(uint256 _value)\\n        external\\n    {\\n        require(\\n            _value <= MAX_MINT_AMOUNT,\\n            \\\"VALUE_TOO_LARGE\\\"\\n        );\\n\\n        _mint(msg.sender, _value);\\n    }\\n}\\n\",\"keccak256\":\"0x9f6ef7885cac1922e392a3c5c59789c8bb3d9209c57bab6801bd631a10c81bb0\"}},\"version\":1}",
+  "bytecode": "0x60806040523480156200001157600080fd5b506040516200119538038062001195833981810160405260808110156200003757600080fd5b81019080805160405193929190846401000000008211156200005857600080fd5b9083019060208201858111156200006e57600080fd5b82516401000000008111828201881017156200008957600080fd5b82525081516020918201929091019080838360005b83811015620000b85781810151838201526020016200009e565b50505050905090810190601f168015620000e65780820380516001836020036101000a031916815260200191505b50604052602001805160405193929190846401000000008211156200010a57600080fd5b9083019060208201858111156200012057600080fd5b82516401000000008111828201881017156200013b57600080fd5b82525081516020918201929091019080838360005b838110156200016a57818101518382015260200162000150565b50505050905090810190601f168015620001985780820380516001836020036101000a031916815260200191505b5060409081526020828101519290910151600080546001600160a01b0319163317905586519294509250620001d39160049187019062000209565b508251620001e990600590602086019062000209565b506006919091553360009081526001602052604090205550620002ae9050565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106200024c57805160ff19168380011785556200027c565b828001600101855582156200027c579182015b828111156200027c5782518255916020019190600101906200025f565b506200028a9291506200028e565b5090565b620002ab91905b808211156200028a576000815560010162000295565b90565b610ed780620002be6000396000f3fe608060405234801561001057600080fd5b50600436106100ea5760003560e01c806395d89b411161008c578063dd62ed3e11610066578063dd62ed3e146102e2578063e30443bc1461031d578063f2fde38b14610356578063fa9b701814610389576100ea565b806395d89b4114610282578063a0712d681461028a578063a9059cbb146102a9576100ea565b806323b872dd116100c857806323b872dd146101d3578063313ce5671461021657806370a082311461021e5780638da5cb5b14610251576100ea565b806306fdde03146100ef578063095ea7b31461016c57806318160ddd146101b9575b600080fd5b6100f7610391565b6040805160208082528351818301528351919283929083019185019080838360005b83811015610131578181015183820152602001610119565b50505050905090810190601f16801561015e5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6101a56004803603604081101561018257600080fd5b5073ffffffffffffffffffffffffffffffffffffffff813516906020013561043d565b604080519115158252519081900360200190f35b6101c16104b0565b60408051918252519081900360200190f35b6101a5600480360360608110156101e957600080fd5b5073ffffffffffffffffffffffffffffffffffffffff8135811691602081013590911690604001356104b6565b6101c1610772565b6101c16004803603602081101561023457600080fd5b503573ffffffffffffffffffffffffffffffffffffffff16610778565b6102596107a0565b6040805173ffffffffffffffffffffffffffffffffffffffff9092168252519081900360200190f35b6100f76107bc565b6102a7600480360360208110156102a057600080fd5b5035610835565b005b6101a5600480360360408110156102bf57600080fd5b5073ffffffffffffffffffffffffffffffffffffffff81351690602001356108bb565b6101c1600480360360408110156102f857600080fd5b5073ffffffffffffffffffffffffffffffffffffffff81358116916020013516610a4a565b6102a76004803603604081101561033357600080fd5b5073ffffffffffffffffffffffffffffffffffffffff8135169060200135610a82565b6102a76004803603602081101561036c57600080fd5b503573ffffffffffffffffffffffffffffffffffffffff16610b32565b6101c1610bda565b6004805460408051602060026001851615610100027fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0190941693909304601f810184900484028201840190925281815292918301828280156104355780601f1061040a57610100808354040283529160200191610435565b820191906000526020600020905b81548152906001019060200180831161041857829003601f168201915b505050505081565b33600081815260026020908152604080832073ffffffffffffffffffffffffffffffffffffffff8716808552908352818420869055815186815291519394909390927f8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925928290030190a350600192915050565b60035490565b73ffffffffffffffffffffffffffffffffffffffff83166000818152600260209081526040808320338452825280832054938352600190915281205490919083111561056357604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601a60248201527f45524332305f494e53554646494349454e545f42414c414e4345000000000000604482015290519081900360640190fd5b828110156105d257604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601c60248201527f45524332305f494e53554646494349454e545f414c4c4f57414e434500000000604482015290519081900360640190fd5b73ffffffffffffffffffffffffffffffffffffffff8416600090815260016020526040902054838101101561066857604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601060248201527f55494e543235365f4f564552464c4f5700000000000000000000000000000000604482015290519081900360640190fd5b73ffffffffffffffffffffffffffffffffffffffff808516600090815260016020526040808220805487019055918716815220805484900390557fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff8110156107025773ffffffffffffffffffffffffffffffffffffffff851660009081526002602090815260408083203384529091529020805484900390555b8373ffffffffffffffffffffffffffffffffffffffff168573ffffffffffffffffffffffffffffffffffffffff167fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef856040518082815260200191505060405180910390a3506001949350505050565b60065481565b73ffffffffffffffffffffffffffffffffffffffff1660009081526001602052604090205490565b60005473ffffffffffffffffffffffffffffffffffffffff1681565b6005805460408051602060026001851615610100027fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0190941693909304601f810184900484028201840190925281815292918301828280156104355780601f1061040a57610100808354040283529160200191610435565b69021e19e0c9bab24000008111156108ae57604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152600f60248201527f56414c55455f544f4f5f4c415247450000000000000000000000000000000000604482015290519081900360640190fd5b6108b83382610be8565b50565b3360009081526001602052604081205482111561093957604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601a60248201527f45524332305f494e53554646494349454e545f42414c414e4345000000000000604482015290519081900360640190fd5b73ffffffffffffffffffffffffffffffffffffffff831660009081526001602052604090205482810110156109cf57604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601060248201527f55494e543235365f4f564552464c4f5700000000000000000000000000000000604482015290519081900360640190fd5b3360008181526001602090815260408083208054879003905573ffffffffffffffffffffffffffffffffffffffff871680845292819020805487019055805186815290519293927fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef929181900390910190a350600192915050565b73ffffffffffffffffffffffffffffffffffffffff918216600090815260026020908152604080832093909416825291909152205490565b610a8a610cad565b73ffffffffffffffffffffffffffffffffffffffff821660009081526001602052604090205480821015610ae257610ada610acb828463ffffffff610cf616565b6003549063ffffffff610cf616565b600355610b08565b610b04610af5838363ffffffff610cf616565b6003549063ffffffff610d1516565b6003555b5073ffffffffffffffffffffffffffffffffffffffff909116600090815260016020526040902055565b610b3a610cad565b73ffffffffffffffffffffffffffffffffffffffff8116610b6a57610b65610b60610d38565b610d6f565b6108b8565b600080547fffffffffffffffffffffffff00000000000000000000000000000000000000001673ffffffffffffffffffffffffffffffffffffffff83169081178255604051909133917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a350565b69021e19e0c9bab240000081565b73ffffffffffffffffffffffffffffffffffffffff8216600090815260016020526040902054610c1f90829063ffffffff610d1516565b73ffffffffffffffffffffffffffffffffffffffff8316600090815260016020526040902055600354610c58908263ffffffff610d1516565b60035560408051828152905173ffffffffffffffffffffffffffffffffffffffff8416916000917fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef9181900360200190a35050565b60005473ffffffffffffffffffffffffffffffffffffffff163314610cf457600054610cf490610b6090339073ffffffffffffffffffffffffffffffffffffffff16610d77565b565b600082821115610d0f57610d0f610b6060028585610e03565b50900390565b600082820183811015610d3157610d31610b6060008686610e03565b9392505050565b60408051808201909152600481527fe69edc3e00000000000000000000000000000000000000000000000000000000602082015290565b805160208201fd5b6040805173ffffffffffffffffffffffffffffffffffffffff808516602483015283166044808301919091528251808303909101815260649091019091526020810180517bffffffffffffffffffffffffffffffffffffffffffffffffffffffff167f1de45ad10000000000000000000000000000000000000000000000000000000017905292915050565b606063e946c1bb60e01b84848460405160240180846003811115610e2357fe5b60ff1681526020018381526020018281526020019350505050604051602081830303815290604052907bffffffffffffffffffffffffffffffffffffffffffffffffffffffff19166020820180517bffffffffffffffffffffffffffffffffffffffffffffffffffffffff83818316178352505050509050939250505056fea265627a7a7231582099a92ac36a60f6fd2dc7b4b584ada1a1efb189ce4a3131e8b2b381953cd9bf4764736f6c63430005110032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100ea5760003560e01c806395d89b411161008c578063dd62ed3e11610066578063dd62ed3e146102e2578063e30443bc1461031d578063f2fde38b14610356578063fa9b701814610389576100ea565b806395d89b4114610282578063a0712d681461028a578063a9059cbb146102a9576100ea565b806323b872dd116100c857806323b872dd146101d3578063313ce5671461021657806370a082311461021e5780638da5cb5b14610251576100ea565b806306fdde03146100ef578063095ea7b31461016c57806318160ddd146101b9575b600080fd5b6100f7610391565b6040805160208082528351818301528351919283929083019185019080838360005b83811015610131578181015183820152602001610119565b50505050905090810190601f16801561015e5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6101a56004803603604081101561018257600080fd5b5073ffffffffffffffffffffffffffffffffffffffff813516906020013561043d565b604080519115158252519081900360200190f35b6101c16104b0565b60408051918252519081900360200190f35b6101a5600480360360608110156101e957600080fd5b5073ffffffffffffffffffffffffffffffffffffffff8135811691602081013590911690604001356104b6565b6101c1610772565b6101c16004803603602081101561023457600080fd5b503573ffffffffffffffffffffffffffffffffffffffff16610778565b6102596107a0565b6040805173ffffffffffffffffffffffffffffffffffffffff9092168252519081900360200190f35b6100f76107bc565b6102a7600480360360208110156102a057600080fd5b5035610835565b005b6101a5600480360360408110156102bf57600080fd5b5073ffffffffffffffffffffffffffffffffffffffff81351690602001356108bb565b6101c1600480360360408110156102f857600080fd5b5073ffffffffffffffffffffffffffffffffffffffff81358116916020013516610a4a565b6102a76004803603604081101561033357600080fd5b5073ffffffffffffffffffffffffffffffffffffffff8135169060200135610a82565b6102a76004803603602081101561036c57600080fd5b503573ffffffffffffffffffffffffffffffffffffffff16610b32565b6101c1610bda565b6004805460408051602060026001851615610100027fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0190941693909304601f810184900484028201840190925281815292918301828280156104355780601f1061040a57610100808354040283529160200191610435565b820191906000526020600020905b81548152906001019060200180831161041857829003601f168201915b505050505081565b33600081815260026020908152604080832073ffffffffffffffffffffffffffffffffffffffff8716808552908352818420869055815186815291519394909390927f8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925928290030190a350600192915050565b60035490565b73ffffffffffffffffffffffffffffffffffffffff83166000818152600260209081526040808320338452825280832054938352600190915281205490919083111561056357604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601a60248201527f45524332305f494e53554646494349454e545f42414c414e4345000000000000604482015290519081900360640190fd5b828110156105d257604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601c60248201527f45524332305f494e53554646494349454e545f414c4c4f57414e434500000000604482015290519081900360640190fd5b73ffffffffffffffffffffffffffffffffffffffff8416600090815260016020526040902054838101101561066857604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601060248201527f55494e543235365f4f564552464c4f5700000000000000000000000000000000604482015290519081900360640190fd5b73ffffffffffffffffffffffffffffffffffffffff808516600090815260016020526040808220805487019055918716815220805484900390557fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff8110156107025773ffffffffffffffffffffffffffffffffffffffff851660009081526002602090815260408083203384529091529020805484900390555b8373ffffffffffffffffffffffffffffffffffffffff168573ffffffffffffffffffffffffffffffffffffffff167fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef856040518082815260200191505060405180910390a3506001949350505050565b60065481565b73ffffffffffffffffffffffffffffffffffffffff1660009081526001602052604090205490565b60005473ffffffffffffffffffffffffffffffffffffffff1681565b6005805460408051602060026001851615610100027fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0190941693909304601f810184900484028201840190925281815292918301828280156104355780601f1061040a57610100808354040283529160200191610435565b69021e19e0c9bab24000008111156108ae57604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152600f60248201527f56414c55455f544f4f5f4c415247450000000000000000000000000000000000604482015290519081900360640190fd5b6108b83382610be8565b50565b3360009081526001602052604081205482111561093957604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601a60248201527f45524332305f494e53554646494349454e545f42414c414e4345000000000000604482015290519081900360640190fd5b73ffffffffffffffffffffffffffffffffffffffff831660009081526001602052604090205482810110156109cf57604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601060248201527f55494e543235365f4f564552464c4f5700000000000000000000000000000000604482015290519081900360640190fd5b3360008181526001602090815260408083208054879003905573ffffffffffffffffffffffffffffffffffffffff871680845292819020805487019055805186815290519293927fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef929181900390910190a350600192915050565b73ffffffffffffffffffffffffffffffffffffffff918216600090815260026020908152604080832093909416825291909152205490565b610a8a610cad565b73ffffffffffffffffffffffffffffffffffffffff821660009081526001602052604090205480821015610ae257610ada610acb828463ffffffff610cf616565b6003549063ffffffff610cf616565b600355610b08565b610b04610af5838363ffffffff610cf616565b6003549063ffffffff610d1516565b6003555b5073ffffffffffffffffffffffffffffffffffffffff909116600090815260016020526040902055565b610b3a610cad565b73ffffffffffffffffffffffffffffffffffffffff8116610b6a57610b65610b60610d38565b610d6f565b6108b8565b600080547fffffffffffffffffffffffff00000000000000000000000000000000000000001673ffffffffffffffffffffffffffffffffffffffff83169081178255604051909133917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a350565b69021e19e0c9bab240000081565b73ffffffffffffffffffffffffffffffffffffffff8216600090815260016020526040902054610c1f90829063ffffffff610d1516565b73ffffffffffffffffffffffffffffffffffffffff8316600090815260016020526040902055600354610c58908263ffffffff610d1516565b60035560408051828152905173ffffffffffffffffffffffffffffffffffffffff8416916000917fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef9181900360200190a35050565b60005473ffffffffffffffffffffffffffffffffffffffff163314610cf457600054610cf490610b6090339073ffffffffffffffffffffffffffffffffffffffff16610d77565b565b600082821115610d0f57610d0f610b6060028585610e03565b50900390565b600082820183811015610d3157610d31610b6060008686610e03565b9392505050565b60408051808201909152600481527fe69edc3e00000000000000000000000000000000000000000000000000000000602082015290565b805160208201fd5b6040805173ffffffffffffffffffffffffffffffffffffffff808516602483015283166044808301919091528251808303909101815260649091019091526020810180517bffffffffffffffffffffffffffffffffffffffffffffffffffffffff167f1de45ad10000000000000000000000000000000000000000000000000000000017905292915050565b606063e946c1bb60e01b84848460405160240180846003811115610e2357fe5b60ff1681526020018381526020018281526020019350505050604051602081830303815290604052907bffffffffffffffffffffffffffffffffffffffffffffffffffffffff19166020820180517bffffffffffffffffffffffffffffffffffffffffffffffffffffffff83818316178352505050509050939250505056fea265627a7a7231582099a92ac36a60f6fd2dc7b4b584ada1a1efb189ce4a3131e8b2b381953cd9bf4764736f6c63430005110032",
+  "devdoc": {
+    "methods": {
+      "allowance(address,address)": {
+        "params": {
+          "_owner": "The address of the account owning tokens",
+          "_spender": "The address of the account able to transfer the tokens"
+        },
+        "return": "Amount of remaining tokens allowed to spent"
+      },
+      "approve(address,uint256)": {
+        "details": "`msg.sender` approves `_spender` to spend `_value` tokens",
+        "params": {
+          "_spender": "The address of the account able to transfer the tokens",
+          "_value": "The amount of wei to be approved for transfer"
+        },
+        "return": "Always true if the call has enough gas to complete execution"
+      },
+      "balanceOf(address)": {
+        "details": "Query the balance of owner",
+        "params": {
+          "_owner": "The address from which the balance will be retrieved"
+        },
+        "return": "Balance of owner"
+      },
+      "mint(uint256)": {
+        "details": "Mints new tokens for sender",
+        "params": {
+          "_value": "Amount of tokens to mint"
+        }
+      },
+      "setBalance(address,uint256)": {
+        "details": "Sets the balance of target address",
+        "params": {
+          "_target": "Address or which balance will be updated",
+          "_value": "New balance of target address"
+        }
+      },
+      "totalSupply()": {
+        "details": "Query total supply of token",
+        "return": "Total supply of token"
+      },
+      "transfer(address,uint256)": {
+        "details": "send `value` token to `to` from `msg.sender`",
+        "params": {
+          "_to": "The address of the recipient",
+          "_value": "The amount of token to be transferred"
+        },
+        "return": "True if transfer was successful"
+      },
+      "transferFrom(address,address,uint256)": {
+        "details": "ERC20 transferFrom, modified such that an allowance of MAX_UINT represents an unlimited allowance. See https://github.com/ethereum/EIPs/issues/717",
+        "params": {
+          "_from": "Address to transfer from.",
+          "_to": "Address to transfer to.",
+          "_value": "Amount to transfer."
+        },
+        "return": "Success of transfer."
+      },
+      "transferOwnership(address)": {
+        "details": "Change the owner of this contract.",
+        "params": {
+          "newOwner": "New owner address."
+        }
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {}
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 7186,
+        "contract": "contracts/erc20/contracts/test/DummyERC20Token.sol:DummyERC20Token",
+        "label": "owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 22432,
+        "contract": "contracts/erc20/contracts/test/DummyERC20Token.sol:DummyERC20Token",
+        "label": "balances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 22438,
+        "contract": "contracts/erc20/contracts/test/DummyERC20Token.sol:DummyERC20Token",
+        "label": "allowed",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 22440,
+        "contract": "contracts/erc20/contracts/test/DummyERC20Token.sol:DummyERC20Token",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 23216,
+        "contract": "contracts/erc20/contracts/test/DummyERC20Token.sol:DummyERC20Token",
+        "label": "name",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 23218,
+        "contract": "contracts/erc20/contracts/test/DummyERC20Token.sol:DummyERC20Token",
+        "label": "symbol",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 23220,
+        "contract": "contracts/erc20/contracts/test/DummyERC20Token.sol:DummyERC20Token",
+        "label": "decimals",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_uint256"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_uint256)"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}
