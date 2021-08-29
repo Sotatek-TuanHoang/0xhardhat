@@ -114,10 +114,10 @@ const func = async function ({ deployments, getNamedAccounts, getChainId }) {
   await hre.run("set:compile:one", { contractName: "FullMigration"});
   const migrator = await FullMigration.new(deployer);
 
-  // await hre.run('verify:verify', {
-  //   address: migrator.address,
-  //   constructorArguments: [deployer],
-  // })
+  await hre.run('verify:verify', {
+    address: migrator.address,
+    constructorArguments: [deployer],
+  })
   console.log("Migrator deployed to: ", migrator.address);
 
   const getBootstrapper = await migrator.getBootstrapper();

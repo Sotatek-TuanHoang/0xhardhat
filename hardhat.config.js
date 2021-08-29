@@ -27,8 +27,8 @@ module.exports = {
       url: process.env.RINKEBY_RPC,
       accounts: [process.env.RINKEBY_PRIVATE_KEY],
     },
-    evrynet: {
-      url: "http://localhost:22001",
+    bsclocal: {
+      url: "http://127.0.0.1:8885",
       accounts: [process.env.RINKEBY_PRIVATE_KEY],
     },
     bsctestnet: {

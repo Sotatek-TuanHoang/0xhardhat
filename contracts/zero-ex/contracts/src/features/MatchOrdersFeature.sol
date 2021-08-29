@@ -399,7 +399,7 @@ contract MatchOrdersFeature is
             // fee
             matchedFillResults.sellFeePaid = getFeeMatch(
                 sellOrder,
-                matchInfo.sellType,
+                LibNativeOrder.SELL_ORDER + matchInfo.sellType,
                 matchedFillResults
             );
             matchedFillResults.buyFeePaid = LibNativeOrdersStorage.getStorage().orderHashToFeeAmountRemaining[matchInfo.buyOrderHash];
@@ -412,7 +412,7 @@ contract MatchOrdersFeature is
             matchedFillResults.sellFeePaid = LibNativeOrdersStorage.getStorage().orderHashToFeeAmountRemaining[matchInfo.sellOrderHash];
             matchedFillResults.buyFeePaid = getFeeMatch(
                 buyOrder,
-                matchInfo.buyType,
+                LibNativeOrder.BUY_ORDER + matchInfo.buyType,
                 matchedFillResults
             );
         }
@@ -450,7 +450,7 @@ contract MatchOrdersFeature is
     internal
     view
     returns (uint256 fee) {
-        if (typeOrder == LibNativeOrder.MATCH_AMOUNT) {
+        if (typeOrder == LibNativeOrder.SELL_MATCH_AMOUNT || typeOrder == LibNativeOrder.BUY_MATCH_TOTAL ) {
             fee = LibMathV06.safeGetPartialAmountFloor(
                 matchedFillResults.makerAmountFinal,
                 order.makerAmount,

@@ -109,6 +109,12 @@ library LibNativeOrder {
     uint256 private constant ADDRESS_MASK = (1 << 160) - 1;
     uint8 public constant MATCH_AMOUNT = 1;
     uint8 public constant MATCH_TOTAL = 2;
+    uint8 public constant SELL_ORDER = 10;
+    uint8 public constant BUY_ORDER = 20;
+    uint8 public constant SELL_MATCH_AMOUNT = 11;
+    uint8 public constant SELL_MATCH_TOTAL = 12;
+    uint8 public constant BUY_MATCH_AMOUNT = 21;
+    uint8 public constant BUY_MATCH_TOTAL = 22;
 
     // The type hash for limit orders, which is:
     // keccak256(abi.encodePacked(
